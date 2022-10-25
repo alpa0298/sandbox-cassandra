@@ -13,6 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthorsServiceImpl implements AuthorsService {
 
+    //    private final AuthorCassandraRepository authorRepository;
     private final AuthorRepository authorRepository;
 
     @Override

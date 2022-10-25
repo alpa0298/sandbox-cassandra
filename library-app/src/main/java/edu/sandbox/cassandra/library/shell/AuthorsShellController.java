@@ -1,6 +1,7 @@
 package edu.sandbox.cassandra.library.shell;
 
 import edu.sandbox.cassandra.library.domain.Author;
+import edu.sandbox.cassandra.library.repository.TestRepository;
 import edu.sandbox.cassandra.library.services.AuthorsService;
 import edu.sandbox.cassandra.library.shell.argumentmappers.AuthorArgumentMapper;
 import edu.sandbox.cassandra.library.shell.responsemappers.ToStringResponseMapper;
@@ -24,8 +25,14 @@ import static java.lang.String.format;
 public class AuthorsShellController {
 
     private final AuthorsService authorsService;
+    private final TestRepository testRepository;
     private final AuthorArgumentMapper authorArgumentMapper;
     private final ToStringResponseMapper<Author> authorToStringResponseMapper;
+
+    @ShellMethod(value = "Runs test method", key = {"test"})
+    public void test() {
+        testRepository.test();
+    }
 
     @ShellMethod(value = "Finds all authors", key = {"authors", "a"})
     public String findAll() {

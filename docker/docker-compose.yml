@@ -2,10 +2,12 @@ version: "3.8"
 
 services:
 
-  cassandra:
-    container_name: cassandra
-    hostname: cassandra
-    build: cassandra
+  cassandra-3.11.10:
+    container_name: cassandra-3.11.10
+    hostname: cassandra-3.11.10
+    build:
+      context: cassandra
+      dockerfile: cassandra-3.11.10.dockerfile
     environment:
       CASSANDRA_CLUSTER_NAME: sandbox-cluster
       CASSANDRA_KEYSPACE: sandbox
@@ -15,4 +17,21 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 2048M
+          memory: 4096M
+
+#  cassandra-4.0.6:
+#    container_name: cassandra-4.0.6
+#    hostname: cassandra-4.0.6
+#    build:
+#      context: cassandra
+#      dockerfile: cassandra-4.0.6.dockerfile
+#    environment:
+#      CASSANDRA_CLUSTER_NAME: sandbox-cluster
+#      CASSANDRA_KEYSPACE: sandbox
+#    ports:
+#      - "9042:9042"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '0.5'
+#          memory: 4096M

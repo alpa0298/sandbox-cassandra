@@ -1,11 +1,7 @@
 package edu.sandbox.cassandra.library.repository;
 
+import edu.sandbox.cassandra.library.core.operations.CrudOperations;
 import edu.sandbox.cassandra.library.domain.Author;
-import org.springframework.data.cassandra.repository.CassandraRepository;
 
-public interface AuthorRepository extends CassandraRepository<Author, String> {
-
-    Author findByName(String name);
-
-    void deleteByName(String name);
+public interface AuthorRepository extends CrudOperations<Author> {
 }

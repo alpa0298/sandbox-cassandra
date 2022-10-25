@@ -1,20 +1,17 @@
 package edu.sandbox.cassandra.library.config;
 
-import org.springframework.context.annotation.Configuration;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
-import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
-@Configuration
-@EnableCassandraRepositories
+@Data
+@ConstructorBinding
+@ConfigurationProperties("spring.data.cassandra")
 public class CassandraConfig extends AbstractCassandraConfiguration {
 
-    @Override
-    public String getContactPoints() {
-        return "localhost";
-    }
-
-    @Override
-    protected String getKeyspaceName() {
-        return "sandbox";
-    }
+    private final String contactPoints;
+    private final String keyspaceName;
+    private final String localDataCenter;
+    private final int port;
 }

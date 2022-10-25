@@ -1,4 +1,4 @@
-FROM cassandra:latest
+FROM cassandra:3.11.10
 
 COPY scripts/cql/keyspace.cql /keyspace.cql
 COPY scripts/cql/schema.cql /schema.cql
